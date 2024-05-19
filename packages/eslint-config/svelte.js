@@ -6,15 +6,16 @@ const project = resolve(process.cwd(), 'tsconfig.json');
 module.exports = {
   extends: [
     'eslint:recommended',
-    'prettier',
+    'plugin:@typescript-eslint/recommended',
     'plugin:svelte/recommended',
     'eslint-config-turbo',
+    'prettier',
   ],
   env: {
     node: true,
     browser: true,
   },
-  plugins: ['only-warn'],
+  plugins: ['@typescript-eslint'],
   settings: {
     'import/resolver': {
       typescript: {
@@ -31,6 +32,7 @@ module.exports = {
 
   parser: '@typescript-eslint/parser',
   parserOptions: {
+    sourceType: 'module',
     project,
     extraFileExtensions: ['.svelte'], // This is a required setting in `@typescript-eslint/parser` v4.24.0.
   },

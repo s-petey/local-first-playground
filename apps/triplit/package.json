@@ -1,32 +1,41 @@
 {
   "name": "triplit",
+  "version": "0.0.1",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "pnpm run --parallel /^dev:/",
+    "dev:client": "vite dev",
+    "dev:triplit": "triplit dev",
     "build": "vite build",
     "preview": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.json",
-    "lint": "eslint . --max-warnings 0",
-    "fix": "eslint --fix . --max-warnings 0"
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "lint": "prettier --check . && eslint .",
+    "format": "prettier --write .",
+    "fix": "eslint --fix . --max-warnings 0 && prettier --write ."
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "@sveltejs/vite-plugin-svelte": "^3.0.2",
-    "@triplit/cli": "^0.3.55",
-    "@tsconfig/svelte": "^5.0.2",
-    "eslint": "^8.57.0",
-    "svelte": "^4.2.17",
-    "svelte-check": "^3.6.7",
-    "tslib": "^2.6.2",
-    "typescript": "^5.2.2",
-    "vite": "^5.2.0",
-    "eslint-plugin-svelte": "^2.39.0"
+    "@sveltejs/adapter-auto": "^3.0.0",
+    "@sveltejs/kit": "^2.0.0",
+    "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "@types/eslint": "^8.56.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-svelte": "^2.36.0-next.4",
+    "prettier": "^3.1.1",
+    "prettier-plugin-svelte": "^3.1.2",
+    "svelte": "^5.0.0-next.1",
+    "svelte-check": "^3.6.0",
+    "tslib": "^2.4.1",
+    "typescript": "^5.0.0",
+    "vite": "^5.0.3",
+    "@triplit/cli": "^0.3.55"
   },
   "dependencies": {
     "@triplit/client": "^0.3.46",
     "@triplit/svelte": "^0.1.18"
-  }
+  },
+  "type": "module"
 }
