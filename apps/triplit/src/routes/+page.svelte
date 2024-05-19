@@ -6,16 +6,16 @@
 
   const connection = useConnectionStatus(triplit);
 
-  const statusMessage = connection.status === 'OPEN' ? 'connected' : 'disconnected';
+  const statusMessage = $derived(connection.status === 'OPEN' ? 'connected' : 'disconnected');
 </script>
 
 <h3>Sync connection: {statusMessage}</h3>
 {#if connection.status === 'OPEN'}
-  <button class="btn disconnect" on:click={() => triplit.syncEngine.disconnect()}>
+  <button class="btn disconnect" onclick={() => triplit.syncEngine.disconnect()}>
     Disconnect
   </button>
 {:else}
-  <button class="btn connect" on:click={() => triplit.syncEngine.connect()}> Connect </button>
+  <button class="btn connect" onclick={() => triplit.syncEngine.connect()}> Connect </button>
 {/if}
 
 <hr />
